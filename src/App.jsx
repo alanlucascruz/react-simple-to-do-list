@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
+import { useState } from "react";
 import {
   addTask,
   removeTask,
   toggleChecked,
 } from "./store/reducers/taskReducer";
-import { useState } from "react";
+
+import "./App.css";
 
 function App() {
   const [taskInput, setTaskInput] = useState("");
@@ -17,7 +18,7 @@ function App() {
     dispatch(toggleChecked(id));
   };
 
-  const onSubmitForm = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     if (!taskInput.trim()) return;
@@ -42,7 +43,7 @@ function App() {
       <div className="wrap-header">
         <div className="header">
           <h2 className="title">To Do List</h2>
-          <form onSubmit={(e) => onSubmitForm(e)}>
+          <form onSubmit={(e) => onSubmit(e)}>
             <input
               type="text"
               placeholder="Adicione uma tarefa"
